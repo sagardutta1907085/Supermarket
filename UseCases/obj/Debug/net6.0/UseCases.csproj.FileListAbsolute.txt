@@ -1,0 +1,15 @@
+G:\Supermarketfinal\UseCases\bin\Debug\net6.0\UseCases.deps.json
+G:\Supermarketfinal\UseCases\bin\Debug\net6.0\UseCases.dll
+G:\Supermarketfinal\UseCases\bin\Debug\net6.0\UseCases.pdb
+G:\Supermarketfinal\UseCases\bin\Debug\net6.0\CoreBusiness.dll
+G:\Supermarketfinal\UseCases\bin\Debug\net6.0\CoreBusiness.pdb
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.csproj.AssemblyReference.cache
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.GeneratedMSBuildEditorConfig.editorconfig
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.AssemblyInfoInputs.cache
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.AssemblyInfo.cs
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.csproj.CoreCompileInputs.cache
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.csproj.CopyComplete
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.dll
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\refint\UseCases.dll
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\UseCases.pdb
+G:\Supermarketfinal\UseCases\obj\Debug\net6.0\ref\UseCases.dll

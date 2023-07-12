@@ -1,0 +1,43 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<style>
+    body {
+        background-image: url('https://media.istockphoto.com/photos/blurry-background-low-angle-canned-foods-aisle-section-at-american-picture-id1048717730?k=6&m=1048717730&s=612x612&w=0&h=vJw6H2PIwF_UjPN2KogQqq0FqEKMmNc1zx6-eQXCcV8=');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 40px;
+        color: black;
+    }
+    header {
+        background-color: transparent;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        display: none;
+    }
+</style>
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        <p>You have successfully logged in.</p>
+    }
+</header>

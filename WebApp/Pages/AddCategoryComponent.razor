@@ -1,0 +1,96 @@
+﻿@page "/addcategory"
+@attribute [Authorize(Policy ="AdminOnly")]
+@using UseCases.UseCaseInterfaces;
+
+@inject NavigationManager NavigationManager
+@inject IAddCategoryUseCase AddCategoryUseCase
+
+<h3>Add Category</h3>
+
+@if(category != null)
+{
+	<EditForm Model="category"  OnValidSubmit="OnValidSubmit">
+		<DataAnnotationsValidator></DataAnnotationsValidator>
+		<ValidationSummary></ValidationSummary>
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<InputText id="name" @bind-Value="category.Name" class="form-control"></InputText>
+		</div>
+
+		<br/>
+
+		<div class="form-group">
+			<label for="description">Description</label>
+			<InputText id="description" @bind-Value="category.Description" class="form-control"></InputText>
+		</div>
+
+		<br/>
+
+		<button type="submit" class="btn btn-primary">Save</button>
+		<button type="button" class="btn btn-primary" @onclick="OnCancel">Cancel</button>
+
+	</EditForm>
+}
+
+<style>
+	body {
+		background-image: url('https://media.istockphoto.com/photos/blurry-background-low-angle-canned-foods-aisle-section-at-american-picture-id1048717730?k=6&m=1048717730&s=612x612&w=0&h=vJw6H2PIwF_UjPN2KogQqq0FqEKMmNc1zx6-eQXCcV8=');
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-top: 40px;
+		color: black;
+	}
+
+	.container {
+		background-color: transparent;
+		border-radius: 5px;
+		box-shadow: none padding: 40px;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	.form-label {
+		font-weight: 500;
+	}
+
+	.footer {
+		display: none;
+	}
+
+	#login-submit {
+		margin-top: 20px;
+	}
+
+	#forgot-password,
+	#register-user,
+	#resend-confirmation {
+		color: #007bff;
+		text-decoration: none;
+	}
+</style>
+@code 
+{
+	private Category category;
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+
+		category = new Category();
+
+	}
+
+	private void OnValidSubmit()
+	{
+		AddCategoryUseCase.Execute(category);
+		NavigationManager.NavigateTo("/categories");
+	}
+
+	private void OnCancel()
+	{
+		NavigationManager.NavigateTo("/categories");
+	}
+}

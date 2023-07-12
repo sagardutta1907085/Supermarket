@@ -1,0 +1,81 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-pzjw8f+ua6m/+a/X5zQL5P1+n4Pjc0wJV5g6j5R34h6Z2KR5foI83j5fjomwXs18" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/photos/blurry-background-low-angle-canned-foods-aisle-section-at-american-picture-id1048717730?k=6&m=1048717730&s=612x612&w=0&h=vJw6H2PIwF_UjPN2KogQqq0FqEKMmNc1zx6-eQXCcV8=');
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 40px;
+        }
+
+        .container {
+            background-color: transparent;
+            border-radius: 5px;
+            box-shadow: none padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .footer {
+            display: none;
+        }
+
+        #login-submit {
+            margin-top: 20px;
+        }
+
+        #forgot-password,
+        #register-user,
+        #resend-confirmation {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" class="form-control" type="email" asp-for="Input.Email" required />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" class="form-control" type="password" asp-for="Input.Password" required />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input id="confirmPassword" class="form-control" type="password" asp-for="Input.ConfirmPassword" required />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <br/>
+                    <button id="registerSubmit" type="submit" class="btn btn-primary btn-block">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

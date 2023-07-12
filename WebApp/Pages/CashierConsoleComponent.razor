@@ -1,0 +1,119 @@
+﻿@page "/cashier_console"
+@attribute [Authorize(Policy = "CashierOnly")]
+
+
+@if (!string.IsNullOrWhiteSpace(cashierName))
+{
+	<div class="row">
+		<div class="col-7">
+			<h4>Cashier's Console</h4>
+		</div>
+		<div class="col-2">
+			<label for="cashier">Cashier Name:</label>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+
+				<input type="text" id="cashier" class="form-control" @bind-value="cashierName" />
+			</div>
+		</div>
+	</div>
+
+
+
+	<br/>
+
+
+	<br/>
+	<div class="row">
+		<div class="col-4">
+			<SelectProductForSellingComponent OnProductSelected="SelectProduct"></SelectProductForSellingComponent>
+			<br/>
+			<SellProductComponent 
+					CashierName="@cashierName"
+					SelectedProduct="selectedProduct" 
+					OnProductSold="SellProduct">
+			</SellProductComponent>
+		</div>
+		<div class="col">
+			<TodayTransactionsComponent @ref="transactionComponent"></TodayTransactionsComponent>
+		</div>
+	</div>
+}
+<style>
+	body {
+		background-image: url('https://media.istockphoto.com/photos/blurry-background-low-angle-canned-foods-aisle-section-at-american-picture-id1048717730?k=6&m=1048717730&s=612x612&w=0&h=vJw6H2PIwF_UjPN2KogQqq0FqEKMmNc1zx6-eQXCcV8=');
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-top: 40px;
+		color: black;
+	}
+
+	.container {
+		background-color: transparent;
+		border-radius: 5px;
+		box-shadow: none padding: 40px;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	.form-label {
+		font-weight: 500;
+	}
+
+	.footer {
+		display: none;
+	}
+
+	#login-submit {
+		margin-top: 20px;
+	}
+
+	#forgot-password,
+	#register-user,
+	#resend-confirmation {
+		color: #007bff;
+		text-decoration: none;
+	}
+</style>
+
+@code {
+	private TodayTransactionsComponent transactionComponent;
+
+	private Product selectedProduct;
+	private string cashierName;
+
+	[CascadingParameter]
+	private Task<AuthenticationState> _authState { get; set; }
+
+	private AuthenticationState authState;
+
+	protected override async Task OnInitializedAsync()
+	{
+		authState = await _authState;
+		cashierName = authState.User.Identity.Name;
+	}
+
+	protected override void OnAfterRender(bool firstRender)
+	{
+		base.OnAfterRender(firstRender);
+
+		if (firstRender)
+		{
+			transactionComponent.LoadTransactions(cashierName);
+		}
+	} 
+
+	private void SelectProduct(Product product)
+	{
+		selectedProduct = product;
+	}
+
+	private void SellProduct(Product product)
+	{
+		transactionComponent.LoadTransactions(cashierName);
+	}
+
+}
